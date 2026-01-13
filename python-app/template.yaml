@@ -1,9 +1,9 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: python-template
-  title: Python flask template
-  description: Provisions a minimalistic flask application
+  name: Test-template
+  title: Test template
+  description: Test template
 spec:
   owner: development
   type: service
@@ -42,7 +42,7 @@ spec:
       action: publish:github
       input:
         description: This is ${{ parameters.component_id }}
-        repoUrl: github.com?owner=ricardoandre-97&repo=${{parameters.component_id}}
+        repoUrl: github.com?owner=Madryx&repo=${{parameters.component_id}}
         protectDefaultBranch: false
         repoVisibility: public
 
@@ -57,5 +57,6 @@ spec:
     links:
       - title: Repository
         url: ${{ steps['publish'].output.remoteUrl }}
+
 
 
