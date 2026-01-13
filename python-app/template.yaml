@@ -44,7 +44,7 @@ spec:
         allowedHosts:
           - github.com
         description: This is ${{ parameters.component_id }}
-        repoUrl: github.com?owner=ricardoandre-97&repo=${{parameters.component_id}}
+        repoUrl: github.com?Madryx&repo=${{parameters.component_id}}
         protectDefaultBranch: false
         repoVisibility: public
 
@@ -59,4 +59,5 @@ spec:
     links:
       - title: Repository
         url: ${{ steps['publish'].output.remoteUrl }}
+
 
