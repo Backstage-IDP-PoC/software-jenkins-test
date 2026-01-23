@@ -1,11 +1,10 @@
 apiVersion: backstage.io/v1alpha1
-kind: Component
+kind: Template
 metadata:
-  name: ${{values.app_name}}
-  description: Python app that displays time - named ${{values.app_name}}
+  name: Test Template
+  description: Test Template
   annotations:
-    github.com/project-slug: jk7testorg/${{values.app_name}}
-    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: jk7testorg/backstage-software-templates
 spec:
   type: service
   owner: development
