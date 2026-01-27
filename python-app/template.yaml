@@ -1,7 +1,7 @@
 apiVersion: scaffolder.backstage.io/v1beta3s
 kind: Template
 metadata:
-  name: Test-template
+  name: Jenkins-test-template
   title: Jenkins Test template
   description: Test template
 spec:
@@ -57,5 +57,6 @@ spec:
     links:
       - title: Repository
         url: ${{ steps['publish'].output.remoteUrl }}
+
 
 
