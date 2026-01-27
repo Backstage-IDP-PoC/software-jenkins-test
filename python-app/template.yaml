@@ -56,27 +56,27 @@ spec:
     - id: trigger-jenkins-scan
       name: Trigger Jenkins Organization Scan
       action: executeShellCommand
-        input:
-          command: |
-            #!/bin/bash
-            set -e
-            JENKINS_HOST="https://donella-bionomic-thermostatically.ngrok-free.dev"
-            ORG_FOLDER="jk7testjenkins"
-            USER="backstage"
-            TOKEN="1193767a732b9753cd50379fed792de2d4"
+      input:
+        command: |
+          #!/bin/bash
+          set -e
+          JENKINS_HOST="https://donella-bionomic-thermostatically.ngrok-free.dev"
+          ORG_FOLDER="jk7testjenkins"
+          USER="backstage"
+          TOKEN="1193767a732b9753cd50379fed792de2d4"
           
-            CRUMB=$(curl -s -u "${USER}:${TOKEN}" \
-              "https://${JENKINS_HOST}/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,\":\",//crumb)")
+          CRUMB=$(curl -s -u "${USER}:${TOKEN}" \
+            "https://${JENKINS_HOST}/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,\":\",//crumb)")
 
-            curl -X POST "https://${JENKINS_HOST}/job/${ORG_FOLDER}/build" \
-              -u "${USER}:${TOKEN}" \
-              -H "${CRUMB}"
-
+          curl -X POST "https://${JENKINS_HOST}/job/${ORG_FOLDER}/build" \
+            -u "${USER}:${TOKEN}" \
+            -H "${CRUMB}"
 
   output:
     links:
       - title: Repository
         url: ${{ steps['publish'].output.remoteUrl }}
+
 
 
 
