@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        REPO = 'https://github.com/jk7testorg/pythonappcatalogue.git'
+        REPO = 'https://github.com/jk7testorg/${{parameters.component_id}}'
         BRANCH = 'main'
     }
 
