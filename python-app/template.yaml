@@ -52,6 +52,7 @@ spec:
       input:
         repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
         catalogInfoPath: "/catalog-info.yaml"
+        
     - id: trigger-jenkins-scan
       name: Trigger Jenkins Organization Scan
       action: scaffolder:runShellScript
@@ -74,6 +75,7 @@ spec:
     links:
       - title: Repository
         url: ${{ steps['publish'].output.remoteUrl }}
+
 
 
 
