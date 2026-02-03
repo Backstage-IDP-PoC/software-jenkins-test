@@ -7,6 +7,7 @@ metadata:
     github.com/project-slug: Backstage-IDP-PoC/${{values.app_name}}
     backstage.io/techdocs-ref: dir:.
     jenkins.io/job-full-name:  Backstage_PoC/${{values.app_name}}/main
+    jenkins.io/instance: default
 spec:
   type: service
   owner: development
