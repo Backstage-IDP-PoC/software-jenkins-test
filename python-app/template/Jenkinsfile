@@ -68,7 +68,7 @@ pipeline {
 
                         mkdir -p apps/${APP_NAME}
 
-                        cp -r ../manifest-templates/* apps/${APP_NAME}/
+                        cp -r manifest-templates/* k8s-manifest/apps/${APP_NAME}/
 
                         sed -i "s|\\${APP_NAME}|${APP_NAME}|g" apps/${APP_NAME}/*.yaml
                         sed -i "s|\\${DOCKER_IMAGE}|${IMAGE_TAG}|g" apps/${APP_NAME}/deployment.yaml
