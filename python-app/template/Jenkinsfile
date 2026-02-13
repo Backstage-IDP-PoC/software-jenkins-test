@@ -64,7 +64,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'github-tokens', variable: 'GITHUB_TOKEN')]) {
                     sh '''
                         git clone https://${GITHUB_TOKEN}@github.com/Backstage-IDP-PoC/k8s-manifest.git
-                        cd k8s-manifests
+                        cd k8s-manifest
 
                         mkdir -p apps/${APP_NAME}
 
