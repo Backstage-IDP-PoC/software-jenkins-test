@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/Backstage-IDP-PoC/k8s-manifests.git
+    repoURL: https://github.com/Backstage-IDP-PoC/k8s-manifest.git
     targetRevision: main
     path: apps/${APP_NAME}
   destination:
