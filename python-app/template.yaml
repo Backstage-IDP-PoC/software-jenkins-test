@@ -1,9 +1,9 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: Jenkins-test-template
-  title: Jenkins test template
-  description: Test template
+  name: Jenkins-Test-template
+  title: Jenkins-Test template
+  description: Jenkins-Test template
 spec:
   owner: development
   type: service
@@ -53,17 +53,18 @@ spec:
         repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
         catalogInfoPath: "/catalog-info.yaml"
 
+    - id: create-k8s-folder
+      name: Create K8s Manifest Folder
+      action: publish:github:pull-request
+      input:
+        repoUrl: github.com?owner=Backstage-IDP-PoC&repo=k8s-manifest
+        branchName: create-${{ parameters.component_id }}
+        title: "Add manifests for ${{ parameters.component_id }}"
+        description: "This PR creates Kubernetes manifests for ${{ parameters.component_id }}"
+        sourcePath: ./manifest-templates
+        targetPath: apps/${{ parameters.component_id }}
+
   output:
     links:
       - title: Repository
         url: ${{ steps['publish'].output.remoteUrl }}
-
-
-
-
-
-
-
-
-
-
