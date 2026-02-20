@@ -16,5 +16,5 @@ spec:
         - name: ${APP_NAME}
           image: ${DOCKER_IMAGE}
           imagePullPolicy: Always
-          # ports:
-          #   - containerPort: 3000
+          ports:
+            - containerPort: 3000
