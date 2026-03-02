@@ -2,8 +2,8 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: Jenkins-Test-template
-  title: Jenkins-Test template
-  description: Jenkins-Test template
+  title: Jenkins CICD Template
+  description: Jenkins CICD Template
 spec:
   owner: development
   type: service
@@ -25,7 +25,7 @@ spec:
           description: The environment where this component will be deployed
           enum:
             - dev
-            - prod
+            # - prod
 
   steps:
     - id: fetch-base
