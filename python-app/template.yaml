@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: Jenkins-Test-template
-  title: Github-Jenkins-ArgoCD Template
+  title: GitHub-Jenkins-ArgoCD Template
   description: Github-Jenkins-ArgoCD Template
 spec:
   owner: development
