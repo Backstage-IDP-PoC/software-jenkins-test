@@ -47,20 +47,23 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('Suresh SonarQube') {
-                    withCredentials([string(credentialsId: 'sonar-token1', variable: 'SONAR_AUTH_TOKEN')]) {
-                        sh """
-                        npx sonar-scanner \
-                          -Dsonar.projectKey=${APP_NAME} \
-                          -Dsonar.sources=. \
-                          -Dsonar.host.url=$SONAR_HOST_URL \
-                          -Dsonar.login=$SONAR_AUTH_TOKEN
-                        """
-                    }
+                withSonarQubeEnv('SonarQube') {
+                    sh '''
+                    npx sonar-scanner \
+                      -Dsonar.projectKey=${APP_NAME} \
+                      -Dsonar.sources=.
+                    '''
                 }
             }
         }
 
+        stage('Quality Gate') {
+            steps {
+                timeout(time: 5, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
 
         stage('Build Docker Image') {
             steps {
