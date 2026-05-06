@@ -1,20 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ${APP_NAME}
+  name: ${{values.component_id}}
+  namespace: ${{values.namespace}}
+  labels:
+    app: ${{values.component_id}}
+    backstage.io/component: ${{values.component_id}}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ${APP_NAME}
+      app: ${{values.component_id}}
   template:
     metadata:
       labels:
-        app: ${APP_NAME}
+        app: ${{values.component_id}}
     spec:
       containers:
-        - name: ${APP_NAME}
-          image: ${DOCKER_IMAGE}
-          imagePullPolicy: Always
+        - name: ${{values.component_id}}
+          image: ${{values.image}}:${{values.tag}}
           ports:
-            - containerPort: 3000
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
