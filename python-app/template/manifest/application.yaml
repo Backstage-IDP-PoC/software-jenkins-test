@@ -1,18 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ${APP_NAME}
+  name: ${{values.component_id}}
   namespace: argocd
+  labels:
+    backstage.io/component: ${{values.component_id}}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://github.com/Backstage-IDP-PoC/k8s-manifest.git
+    repoURL: ${{values.repoUrl}}
     targetRevision: main
-    path: apps/${APP_NAME}
+    path: ${{values.component_id}}/manifest
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: ${{values.namespace}}
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
